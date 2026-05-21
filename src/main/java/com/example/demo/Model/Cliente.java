@@ -11,19 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-/*
-    Le digo que va a ser una entidad y se va a mapear con una tabla.
-    Table: Especifica con que tabla se mapea.
- */
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 public class Cliente {
 
-    /*
-        GeneratedValue: Incrementa el Id.
-        Column: Darle el nombre a la columna de la tabla.
-        JsonProperty: Va a representar como quiero que se llame el atributo cuando devuelvo la información.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
@@ -36,12 +27,13 @@ public class Cliente {
     private LocalDateTime fechaRegistro;
     private String password;
     private String direccion;
+    private String telefono;
 
-    public Cliente(){} // Importante, siempre tiene que estar.
-    /* Spring necesita tener algo que instanciar, si no pongo da error. */
+    public Cliente() {
+    }
 
     public Cliente(Long idCliente, String nombre, String apellido, String email, LocalDateTime fechaRegistro,
-            String password, String direccion) {
+            String password, String direccion, String telefono) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -49,6 +41,7 @@ public class Cliente {
         this.fechaRegistro = fechaRegistro;
         this.password = password;
         this.direccion = direccion;
+        this.telefono = telefono;
     }
 
     public Long getIdCliente() {
@@ -107,6 +100,11 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    
+    public String getTelefono() {
+        return telefono;
+    }
 
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 }
