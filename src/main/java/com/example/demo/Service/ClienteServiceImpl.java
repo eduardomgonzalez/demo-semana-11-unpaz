@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,26 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void eliminar(Cliente entidad) {
         clienteRepository.delete(entidad);
+    }
+
+    @Override
+    public Optional<Cliente> buscarClientePorEmail(String email) {
+        return clienteRepository.buscarClientePorEmail(email);
+    }
+
+    @Override
+    public List<Cliente> findByNombre(String nombre) {
+        return clienteRepository.findByNombre(nombre);
+    }
+
+    @Override
+    public List<Cliente> findByNombreAndApellido(String nombre, String apellido) {
+        return clienteRepository.findByNombreAndApellido(nombre, apellido);
+    }
+
+    @Override
+    public List<Cliente> findByNombreIgnoreCase(String nombre) {
+        return clienteRepository.findByNombreIgnoreCase(nombre);
     }
 
 }
